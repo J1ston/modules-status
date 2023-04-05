@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)https://mdn.github.io/css-examples/learn/images/filter.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Images and other unusual elements: filters</title>
+    <link rel="stylesheet" href="https://mdn.github.io/css-examples/learn/styles.css">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      .wrapper {
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .wrapper > * {
+        margin: 20px;
+        flex: 1;
+      }
+
+      .box {
+        border: 5px solid darkblue;
+      }
+      
+    </style>
+
+    <style class="editable">img {
+  height: 100%;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.blur {
+  filter: blur(10px);
+}
+
+.grayscale {
+  filter: grayscale(60%);
+}
+    </style>
+  </head>
+
+  <body>
+    <section class="preview"><div class="wrapper">
+  <div class="box"><img src="https://mdn.github.io/css-examples/learn/images/balloons.jpg" alt="balloons" class="blur"></div>
+  <div class="box"><img src="https://mdn.github.io/css-examples/learn/images/balloons.jpg" alt="balloons" class="grayscale"></div>
+</div>
+    </section>
+
+    <h4>Interactive editor</h4><textarea class="playable playable-css" style="height: 320px;">img {
+  height: 100%;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.blur {
+  filter: blur(10px);
+}
+
+.grayscale {
+  filter: grayscale(60%);
+}
+    </textarea>
+
+    <textarea class="playable playable-html" style="height: 120px;">&lt;div class="wrapper"&gt;
+  &lt;div class="box"&gt;&lt;img src="balloons.jpg" alt="balloons" class="blur"&gt;&lt;/div&gt;
+  &lt;div class="box"&gt;&lt;img src="balloons.jpg" alt="balloons" class="grayscale"&gt;&lt;/div&gt;
+&lt;/div&gt;
+    </textarea>
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="https://mdn.github.io/css-examples/learn/playable.js"></script>
+
+</body></html>

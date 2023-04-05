@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Модуль "Семантика"</title>
+    <link rel="stylesheet" href="main.aac3a64b.css">
+</head>
+
+<body>
+    <header>
+        <h1>Модуль "Семантика"</h1>
+    </header>
+    <main id="content" class="main-content  " class="abc">
+        <article class="main-page-content" lang="ru">
+            
+            <div class="section-content">
+                <p>В программировании, <strong>Семантика</strong> означает <em>значение</em> фрагмента кода - например,
+                    «К какому результату приведёт выполнение этой строки JavaScript?», или «Каково предназначение или
+                    какая роль у этого элемента HTML?», а не «Как он выглядит?».</p>
+            </div>
+            <section aria-labelledby="семантика_в_javascript">
+                <h2 id="семантика_в_javascript"><a href="#семантика_в_javascript">Семантика в JavaScript</a></h2>
+                <div class="section-content">
+                    <p>Для JavaScript, рассмотрим функцию, которая принимает строку в качестве параметра, и возвращает
+                        элемент <a href="/ru/docs/Web/HTML/Element/li"><code>&lt;li&gt;</code></a> с этой строкой в
+                        качестве свойства <code>textContent</code>. Нужно ли вам смотреть на код, чтобы понять, что
+                        делает функция <code>build('Peach')</code>, или <code>createLiWithContent('Peach')</code>?</p>
+                </div>
+            </section>
+            <section aria-labelledby="семантика_в_css">
+                <h2 id="семантика_в_css"><a href="#семантика_в_css">Семантика в CSS</a></h2>
+                <div class="section-content">
+                    <p>Для CSS, рассмотрим стилизацию списка элементов <code>li</code>, в которых содержатся разные виды
+                        фруктов. Вы бы поняли, какая часть DOM выбрана с помощью селектора
+                        <code>div &gt; ul &gt; li</code>, или <code>.fruits__item</code>?</p>
+                </div>
+            </section>
+            <section aria-labelledby="семантика_в_html">
+                <h2 id="семантика_в_html"><a href="#семантика_в_html">Семантика в HTML</a></h2>
+                <div class="section-content">
+                    <p>В HTML, например, элемент <a class="only-in-en-us"
+                            title="Currently only available in English (US)"
+                            href="/en-US/docs/Web/HTML/Element/Heading_Elements"><code>&lt;h1&gt;</code>
+                            <small>(en-US)</small></a> является семантическим, что даёт тексту внутри него роль (или
+                        значение) "заголовка первого уровня на вашей странице".</p>
+                    <div class="code-example">
+                        <pre class="brush: html notranslate"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>This is a top level heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+        </code></pre><button type="button" class="icon copy-icon"><span class="visually-hidden">Copy to
+                                Clipboard</span></button><span class="copy-icon-message visually-hidden" role="alert"
+                            style="top: 52px;"></span>
+                    </div>
+                    <p>По умолчанию, <a href="/ru/docs/Web/CSS/Cascade#user-agent_stylesheets">стандартные стили</a>
+                        большинства браузеров зададут <a class="only-in-en-us"
+                            title="Currently only available in English (US)"
+                            href="/en-US/docs/Web/HTML/Element/Heading_Elements"><code>&lt;h1&gt;</code>
+                            <small>(en-US)</small></a> большой размер шрифта, чтобы он <em>выглядел</em> как заголовок
+                        (хотя вы можете стилизировать его так, как сочтёте нужным).</p>
+                    <p>С другой стороны, вы можете сделать любой элемент <em>похожим</em> на заголовок первого уровня.
+                        Рассмотрим следующее:</p>
+                    <div class="code-example">
+                        <pre class="brush: html notranslate"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span> 32px<span class="token punctuation">;</span> <span class="token property">margin</span><span class="token punctuation">:</span> 21px 0<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>Is this a top level heading?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+        </code></pre><button type="button" class="icon copy-icon"><span class="visually-hidden">Copy to
+                                Clipboard</span></button><span class="copy-icon-message visually-hidden" role="alert"
+                            style="top: 52px;"></span>
+                    </div>
+                    <p>Эти стили сделают элемент похожим на заголовок первого уровня, но он не будет иметь
+                        семантического значения, поэтому не получит никаких дополнительных преимуществ, описанных выше.
+                        Поэтому хорошей практикой является выбор подходящего элемента HTML для каждого отдельного
+                        случая.</p>
+                    <p>HTML должен предоставлять структуру информации, которой он будет наполняться, и не должен
+                        полагаться на стандартные свойства стилей. Стилизация (то, как эта информация должна выглядеть),
+                        полностью ложится на плечи <a href="/ru/docs/Web/CSS">CSS</a>.</p>
+                    <p>Некоторые из преимуществ использования семантической разметки:</p>
+                    <ul>
+                        <li>Поисковые системы будут рассматривать содержимое такой разметки как важные ключевые слова,
+                            влияющие на рейтинг страницы в результатах поиска (смотри <a
+                                href="/ru/docs/Glossary/SEO">SEO</a>)</li>
+                        <li>Программы для чтения с экрана могут использовать её как указатель, чтобы помочь слабовидящим
+                            пользователям ориентироваться на странице</li>
+                        <li>Среди бесконечных блоков <code>div</code> гораздо проще найти блок семантического кода, чем
+                            блок с семантическим классом или классом, принадлежащим пространству имён.</li>
+                        <li>Указывает разработчику на тип данных, которые будут размещены</li>
+                        <li>Семантическая разметка отражает правильное именование элементов / компонентов</li>
+                    </ul>
+                    <p>Принимая решение об использовании той или иной разметки, спросите себя: «Какой элемент (элементы)
+                        лучше всего описывает / представляет данные, которые я собираюсь использовать?» Например, это
+                        список данных ?; упорядоченный, неупорядоченный ?; это статья с разделами и дополнительной
+                        информацией ?; в ней перечислены определения ?; это рисунок или изображение, которое требует
+                        подписи ?; должен ли он иметь собственные <code>header</code> и <code>footer</code>?; и т.п.</p>
+                </div>
+            </section>
+            <section aria-labelledby="семантические_элементы">
+                <h2 id="семантические_элементы"><a href="#семантические_элементы">Семантические элементы</a></h2>
+                <div class="section-content">
+                    <p>Вот <em>некоторые</em> из примерно 100 доступных семантических <a
+                            href="/ru/docs/Web/HTML/Element">элементов</a>:</p>
+                    <ul>
+                        <li><a href="/ru/docs/Web/HTML/Element/article"><code>&lt;article&gt;</code></a></li>
+                        <li><a href="/ru/docs/Web/HTML/Element/aside"><code>&lt;aside&gt;</code></a></li>
+                        <li><a href="/ru/docs/Web/HTML/Element/details"><code>&lt;details&gt;</code></a></li>
+                        <li><a href="/ru/docs/Web/HTML/Element/figcaption"><code>&lt;figcaption&gt;</code></a></li>
+                        <li><a href="/ru/docs/Web/HTML/Element/figure"><code>&lt;figure&gt;</code></a></li>
+                        <li><a href="/ru/docs/Web/HTML/Element/footer"><code>&lt;footer&gt;</code></a></li>
+                        <li><a href="/ru/docs/Web/HTML/Element/header"><code>&lt;header&gt;</code></a></li>
+                        <li><a href="/ru/docs/Web/HTML/Element/main"><code>&lt;main&gt;</code></a></li>
+                        <li><a href="/ru/docs/Web/HTML/Element/mark"><code>&lt;mark&gt;</code></a></li>
+                        <li><a href="/ru/docs/Web/HTML/Element/nav"><code>&lt;nav&gt;</code></a></li>
+                        <li><a href="/ru/docs/Web/HTML/Element/section"><code>&lt;section&gt;</code></a></li>
+                        <li><a href="/ru/docs/Web/HTML/Element/summary"><code>&lt;summary&gt;</code></a></li>
+                        <li><a href="/ru/docs/Web/HTML/Element/time"><code>&lt;time&gt;</code></a></li>
+                    </ul>
+                </div>
+            </section>
+            <a href="index.html" class="bron">назад</a>
+            
+        </article>
+    </main>
+</body>
+
+</html>

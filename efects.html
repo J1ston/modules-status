@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Модуль "Эффекты"</title>
+    <link rel="stylesheet" href="main.aac3a64b.css">
+</head>
+
+<body>
+    <header><h1>Модуль "Эффекты"</h1></header>
+    <main id="content" class="main-content  ">
+        <article class="main-page-content" lang="ru">
+            <div class="section-content">
+                <p>В этой статье описаны некоторые хитрости, которые познакомят вас с такими узкоспециализированными
+                    свойствами, как box-shadow, режимы смешивания и фильтры.</p>
+                <figure class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Необходимые знания:</th>
+                                <th>Основы HTML (изучите <a href="/ru/docs/Learn/HTML/Introduction_to_HTML">Введение в
+                                        HTML</a>) и CSS (статья <a href="/ru/docs/Learn/CSS/First_steps">Введение в
+                                        CSS</a>).</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Задача:</td>
+                                <td>Понять принцип работы узко используемых эффектов в современных браузерах.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </figure>
+            </div>
+            <section aria-labelledby="блок-тень">
+                <h2 id="блок-тень"><a href="#блок-тень">Блок-тень</a></h2>
+                <div class="section-content">
+                    <p><a href="/ru/docs/Web/CSS/box-shadow"><code>box-shadow</code></a> позволяет добавить одну и более
+                        тень к контейнеру. Как и <code>text-shadow</code>, <code>box-shadows</code> отлично
+                        поддерживаются браузерами, включая IE9+ и Edge. У пользователей ранних версий IE будет просто
+                        копия без тени, поэтому убедитесь, что контент с дизайном разборчив и без теней.</p>
+                    <p>Вы можете найти примеры из стати на <a
+                            href="https://mdn.github.io/learning-area/css/styling-boxes/advanced_box_effects/box-shadow.html"
+                            class="external" target="_blank">box-shadow.html</a> (или в <a
+                            href="https://github.com/mdn/learning-area/blob/master/css/styling-boxes/advanced_box_effects/box-shadow.html"
+                            class="external" target="_blank">исходном коде</a>).</p>
+                </div>
+            </section>
+            <section aria-labelledby="обычная_тень">
+                <h3 id="обычная_тень"><a href="#обычная_тень">Обычная тень</a></h3>
+                <div class="section-content">
+                    <p>Для начала взглянем на простой пример:</p>
+                    <div class="code-example">
+                        <pre class="brush: html notranslate"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>article</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>simple<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span>Предупреждение<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>: Температура ракетного двигателя достигла критической отметки.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>article</span><span class="token punctuation">&gt;</span></span>
+        </code></pre><button type="button" class="icon copy-icon"><span class="visually-hidden">Copy to
+                                Clipboard</span></button><span class="copy-icon-message visually-hidden" role="alert"
+                            style="top: 52px;"></span>
+                    </div>
+                    <p>А теперь CSS:</p>
+                    <div class="code-example">
+                        <pre class="brush: css notranslate"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+          <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">article</span> <span class="token punctuation">{</span>
+          <span class="token property">max-width</span><span class="token punctuation">:</span> 500px<span class="token punctuation">;</span>
+          <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+          <span class="token property">background-color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+          <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to bottom<span class="token punctuation">,</span> <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.25<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">.simple</span> <span class="token punctuation">{</span>
+          <span class="token property">box-shadow</span><span class="token punctuation">:</span> 5px 5px 5px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.7<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        </code></pre><button type="button" class="icon copy-icon"><span class="visually-hidden">Copy to
+                                Clipboard</span></button><span class="copy-icon-message visually-hidden" role="alert"
+                            style="top: 52px;"></span>
+                    </div>
+                    <p>В результате получится вот это:</p><iframe class="sample-code-frame" title="Обычная тень sample"
+                        id="frame_обычная_тень" width="100%" height="100"
+                        src="https://yari-demos.prod.mdn.mozit.cloud/ru/docs/Learn/CSS/Building_blocks/Advanced_styling_effects/_sample_.%D0%BE%D0%B1%D1%8B%D1%87%D0%BD%D0%B0%D1%8F_%D1%82%D0%B5%D0%BD%D1%8C.html"
+                        loading="lazy"></iframe>
+                    <p>Как видите, у нас четыре значения в свойстве <code>box-shadow</code>:</p>
+                    <ol>
+                        <li>Первое значение — <strong>смещение по горизонтали</strong> — расстояние, на которое смещена
+                            тень вправо (если значение отрицательное, то влево).</li>
+                        <li><strong>Смещение по вертикали</strong> — расстояние, на которое смещена тень вниз (или
+                            вверх, если значение отрицательное).</li>
+                        <li>Третье значение — это <strong>радиус размытия</strong> — уровень размытия тени.</li>
+                        <li>Значение цвета — это <strong>основной цвет</strong> тени.</li>
+                    </ol>
+                    <p>Вы можете использовать абсолютно любые значения и цвета, если это необходимо.</p>
+                </div>
+            </section>
+            <section aria-labelledby="несколько_теней">
+                <h3 id="несколько_теней"><a href="#несколько_теней">Несколько теней</a></h3>
+                <div class="section-content">
+                    <p>Вы можете определить несколько блок-теней, разделяя их запятыми при объявлении
+                        <code>box-shadow</code>:</p>
+                    <div class="code-example">
+                        <pre class="brush: html hidden notranslate"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>article</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>multiple<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span>Предупреждение<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>: Температура ракетного двигателя достигла критической отметки.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>article</span><span class="token punctuation">&gt;</span></span>
+        </code></pre>
+                    </div>
+                    <div class="code-example">
+                        <pre class="brush: css notranslate"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+          <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">article</span> <span class="token punctuation">{</span>
+          <span class="token property">max-width</span><span class="token punctuation">:</span> 500px<span class="token punctuation">;</span>
+          <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+          <span class="token property">background-color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+          <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to bottom<span class="token punctuation">,</span> <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.25<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">.multiple</span> <span class="token punctuation">{</span>
+          <span class="token property">box-shadow</span><span class="token punctuation">:</span> 1px 1px 1px black<span class="token punctuation">,</span>
+                      2px 2px 1px black<span class="token punctuation">,</span>
+                      3px 3px 1px red<span class="token punctuation">,</span>
+                      4px 4px 1px red<span class="token punctuation">,</span>
+                      5px 5px 1px black<span class="token punctuation">,</span>
+                      6px 6px 1px black<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        </code></pre><button type="button" class="icon copy-icon"><span class="visually-hidden">Copy to
+                                Clipboard</span></button><span class="copy-icon-message visually-hidden" role="alert"
+                            style="top: 52px;"></span>
+                    </div>
+                    <p>В итоге мы получим:</p><iframe class="sample-code-frame" title="Несколько теней sample"
+                        id="frame_несколько_теней" width="100%" height="100"
+                        src="https://yari-demos.prod.mdn.mozit.cloud/ru/docs/Learn/CSS/Building_blocks/Advanced_styling_effects/_sample_.%D0%BD%D0%B5%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE_%D1%82%D0%B5%D0%BD%D0%B5%D0%B9.html"
+                        loading="lazy"></iframe>
+                    <p>Мы сделали контейнер с несколькими ступенчатыми цветными тенями, но вы можете делать, как
+                        считаете то нужным, например, чтобы добавить реалистичности, опираясь на какие-нибудь источники
+                        света.</p>
+                </div>
+            </section>
+            <section aria-labelledby="другие_опции_блок-теней">
+                <h3 id="другие_опции_блок-теней"><a href="#другие_опции_блок-теней">Другие опции блок-теней</a></h3>
+                <div class="section-content">
+                    <p>В отличие от <a href="/ru/docs/Web/CSS/text-shadow"><code>text-shadow</code></a>, у свойства <a
+                            href="/ru/docs/Web/CSS/box-shadow"><code>box-shadow</code></a> есть значение
+                        <code>inset</code> — оно добавляет внутреннюю тень. Поясним это на примере.</p>
+                    <p>Для этого примера используем другой HTML-код:</p>
+                    <div class="code-example">
+                        <pre class="brush: html notranslate"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">&gt;</span></span>Нажми на меня!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+        </code></pre><button type="button" class="icon copy-icon"><span class="visually-hidden">Copy to
+                                Clipboard</span></button><span class="copy-icon-message visually-hidden" role="alert"
+                            style="top: 52px;"></span>
+                    </div>
+                    <div class="code-example">
+                        <pre class="brush: css notranslate"><code><span class="token selector">button</span> <span class="token punctuation">{</span>
+          <span class="token property">width</span><span class="token punctuation">:</span> 150px<span class="token punctuation">;</span>
+          <span class="token property">font-size</span><span class="token punctuation">:</span> 1.1rem<span class="token punctuation">;</span>
+          <span class="token property">line-height</span><span class="token punctuation">:</span> 2<span class="token punctuation">;</span>
+          <span class="token property">border-radius</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+          <span class="token property">border</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+          <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to bottom right<span class="token punctuation">,</span> #777<span class="token punctuation">,</span> #ddd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token property">box-shadow</span><span class="token punctuation">:</span> 1px 1px 1px black<span class="token punctuation">,</span>
+                      inset 2px 3px 5px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.3<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                      inset -2px -3px 5px <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span>255<span class="token punctuation">,</span>255<span class="token punctuation">,</span>0.5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">button:focus, button:hover</span> <span class="token punctuation">{</span>
+          <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to bottom right<span class="token punctuation">,</span> #888<span class="token punctuation">,</span> #eee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">button:active</span> <span class="token punctuation">{</span>
+          <span class="token property">box-shadow</span><span class="token punctuation">:</span> inset 2px 2px 1px black<span class="token punctuation">,</span>
+                      inset 2px 3px 5px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.3<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                      inset -2px -3px 5px <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span>255<span class="token punctuation">,</span>255<span class="token punctuation">,</span>0.5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        </code></pre><button type="button" class="icon copy-icon"><span class="visually-hidden">Copy to
+                                Clipboard</span></button><span class="copy-icon-message visually-hidden" role="alert"
+                            style="top: 52px;"></span>
+                    </div>
+                    <p>Получим:</p><iframe class="sample-code-frame" title="Другие опции блок-теней sample"
+                        id="frame_другие_опции_блок-теней" width="100%" height="70"
+                        src="https://yari-demos.prod.mdn.mozit.cloud/ru/docs/Learn/CSS/Building_blocks/Advanced_styling_effects/_sample_.%D0%B4%D1%80%D1%83%D0%B3%D0%B8%D0%B5_%D0%BE%D0%BF%D1%86%D0%B8%D0%B8_%D0%B1%D0%BB%D0%BE%D0%BA-%D1%82%D0%B5%D0%BD%D0%B5%D0%B9.html"
+                        loading="lazy"></iframe>
+                    <p>Мы стилизовали кнопку с помощью состояний <em>focus</em>, <em>hover</em> и <em>active</em>. Для
+                        кнопки по умолчанию установлены несколько простых чёрных теней плюс пара внутренних теней в
+                        противоположном углу кнопки для эстетичности.</p>
+                    <p>При нажатии на кнопку первая тень становится внутренней, чтобы создать ощущение нажатия кнопки.
+                    </p>
+                    <div class="notecard note" id="sect1">
+                        <p><strong>Примечание:</strong> Есть ещё одно значение <code>box-shadow</code>, которое
+                            устанавливается перед значением свойства, — <strong>радиус разброса</strong>. При его
+                            использовании тень становится больше оригинального контейнера. Свойство не так часто
+                            используют, но оно стоит упоминания.</p>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="фильтры">
+                <h2 id="фильтры"><a href="#фильтры">Фильтры</a></h2>
+                <div class="section-content">
+                    <p>Замечательное свойство, благодаря которому ваш дизайн станет интереснее, — это свойство <a
+                            href="/ru/docs/Web/CSS/filter"><code>filter</code></a>. Это что-то вроде фильтров Photoshop,
+                        но в CSS.</p>
+                    <p>В примере ниже мы использовали два значения этого свойства: первое — <code>blur()</code> —
+                        определяет, насколько изображение размыто.</p>
+                    <p>Второе значение — <code>grayscale()</code>; оно определяет, насколько изображение насыщено.</p>
+                    <iframe width="100%" height="700" src="https://mdn.github.io/css-examples/learn/images/filter.html"
+                        loading="lazy"></iframe>
+                    <p><strong>Попробуйте изменить значения в примере, чтобы посмотреть на изменения. Вы можете менять
+                            значения на другие. Попробуйте добавить <code>contrast(200%)</code>,
+                            <code>invert(100%)</code> или <code>hue-rotate(20deg)</code> в примере ниже. Прочтите статью
+                            <a href="/ru/docs/Web/CSS/filter"><code>filter</code></a>, чтобы узнать о многих других
+                            значениях этого свойства.</strong></p>
+                    <p>Вы можете добавлять фильтры к любым объектам. Некоторые значения свойства работают почти так же,
+                        как CSS-свойства, например, <code>drop-shadow()</code> даёт эффект, схожий с <a
+                            href="/ru/docs/Web/CSS/box-shadow"><code>box-shadow</code></a> или <a
+                            href="/ru/docs/Web/CSS/text-shadow"><code>text-shadow</code></a>.</p>
+                    <p>В фильтрах замечательно то, что они применяются к каждому элементу контейнера. Ниже мы сравнили
+                        фильтр и блок-тень. Как видите, фильтр применился к каждой чёрточке. А блок-тень просто выделила
+                        тень, равную размерам контейнера.</p><iframe width="100%" height="600"
+                        src="https://mdn.github.io/css-examples/learn/images/filter-text.html" loading="lazy"></iframe>
+                </div>
+            </section>
+            <section aria-labelledby="режимы_смешивания">
+                <h2 id="режимы_смешивания"><a href="#режимы_смешивания">Режимы смешивания</a></h2>
+                <div class="section-content">
+                    <p>Режимы смешивания CSS позволяют определить смешивание при наложении двух элементов. Смешивание
+                        очень знакомо пользователям редакторов вроде Photoshop.</p>
+                    <p>В режимах смешивания CSS два значения:</p>
+                    <ul>
+                        <li><a href="/ru/docs/Web/CSS/background-blend-mode"><code>background-blend-mode</code></a>,
+                            которое смешивает цвет фона и цвета отдельного элемента.</li>
+                        <li><a href="/ru/docs/Web/CSS/mix-blend-mode"><code>mix-blend-mode</code></a>, которое смешивает
+                            элементы, наложенные друг на друга.</li>
+                    </ul>
+                    <p>Вы можете найти больше примеров смешивания на странице <a
+                            href="https://mdn.github.io/learning-area/css/styling-boxes/advanced_box_effects/blend-modes.html"
+                            class="external" target="_blank">blend-modes.html</a> (смотрите <a
+                            href="https://github.com/mdn/learning-area/blob/master/css/styling-boxes/advanced_box_effects/blend-modes.html"
+                            class="external" target="_blank">источник</a>) и на странице <a class="only-in-en-us"
+                            title="Currently only available in English (US)"
+                            href="/en-US/docs/Web/CSS/blend-mode"><code>&lt;blend-mode&gt;</code>
+                            <small>(en-US)</small></a>.</p>
+                    <div class="notecard note" id="sect2">
+                        <p><strong>Примечание:</strong> Смешивание относительно новое свойство, поэтому поддерживается
+                            хуже, чем фильтры. Оно совсем не поддерживается на Edge, а Safari поддерживает лишь
+                            некоторые значения свойства.</p>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="background-blend-mode">
+                <h3 id="background-blend-mode"><a href="#background-blend-mode">background-blend-mode</a></h3>
+                <div class="section-content">
+                    <p>Снова обратимся к примеру. Во-первых, <a
+                            href="/ru/docs/Web/CSS/background-blend-mode"><code>background-blend-mode</code></a> — мы
+                        покажем несколько контейнеров <a
+                            href="/ru/docs/Web/HTML/Element/div"><code>&lt;div&gt;</code></a>, чтобы вы сравнили
+                        оригинал с редактированной версией:</p>
+                    <div class="code-example">
+                        <pre class="brush: html notranslate"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>multiply<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        </code></pre><button type="button" class="icon copy-icon"><span class="visually-hidden">Copy to
+                                Clipboard</span></button><span class="copy-icon-message visually-hidden" role="alert"
+                            style="top: 52px;"></span>
+                    </div>
+                    <p>Воспользуемся CSS — добавим к <code>&lt;div&gt;</code> одно фоновое изображение и зелёный фон:
+                    </p>
+                    <div class="code-example">
+                        <pre class="brush: css notranslate"><code><span class="token selector">div</span> <span class="token punctuation">{</span>
+          <span class="token property">width</span><span class="token punctuation">:</span> 250px<span class="token punctuation">;</span>
+          <span class="token property">height</span><span class="token punctuation">:</span> 130px<span class="token punctuation">;</span>
+          <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+          <span class="token property">margin</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+          <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
+          <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>colorful-heart.png<span class="token punctuation">)</span></span> no-repeat center 20px<span class="token punctuation">;</span>
+          <span class="token property">background-color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">.multiply</span> <span class="token punctuation">{</span>
+          <span class="token property">background-blend-mode</span><span class="token punctuation">:</span> multiply<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        </code></pre><button type="button" class="icon copy-icon"><span class="visually-hidden">Copy to
+                                Clipboard</span></button><span class="copy-icon-message visually-hidden" role="alert"
+                            style="top: 52px;"></span>
+                    </div>
+                    <p>Слева вы видите оригинал, справа — изменённое изображение:</p><iframe class="sample-code-frame"
+                        title="background-blend-mode sample" id="frame_background-blend-mode" width="100%" height="200"
+                        src="https://yari-demos.prod.mdn.mozit.cloud/ru/docs/Learn/CSS/Building_blocks/Advanced_styling_effects/_sample_.background-blend-mode.html"
+                        loading="lazy"></iframe>
+                </div>
+            </section>
+            <section aria-labelledby="mix-blend-mode">
+                <h3 id="mix-blend-mode"><a href="#mix-blend-mode">mix-blend-mode</a></h3>
+                <div class="section-content">
+                    <p>Рассмотрим <a href="/ru/docs/Web/CSS/mix-blend-mode"><code>mix-blend-mode</code></a>. Здесь мы
+                        также используем несколько <code>&lt;div&gt;</code>, но каждый из них расположен над простым
+                        <code>&lt;div&gt;</code> с фиолетовым фоном, чтобы показать, как элементы будут смешаны:</p>
+                    <div class="code-example">
+                        <pre class="brush: html notranslate"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>article</span><span class="token punctuation">&gt;</span></span>
+          Нет режима смешивания
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+        
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>article</span><span class="token punctuation">&gt;</span></span>
+        
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>article</span><span class="token punctuation">&gt;</span></span>
+          Множественное смешивание
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>multiply-mix<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>article</span><span class="token punctuation">&gt;</span></span>
+        </code></pre><button type="button" class="icon copy-icon"><span class="visually-hidden">Copy to
+                                Clipboard</span></button><span class="copy-icon-message visually-hidden" role="alert"
+                            style="top: 52px;"></span>
+                    </div>
+                    <p>А здесь CSS:</p>
+                    <div class="code-example">
+                        <pre class="brush: css notranslate"><code><span class="token selector">article</span> <span class="token punctuation">{</span>
+          <span class="token property">width</span><span class="token punctuation">:</span> 280px<span class="token punctuation">;</span>
+          <span class="token property">height</span><span class="token punctuation">:</span> 180px<span class="token punctuation">;</span>
+          <span class="token property">margin</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+          <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+          <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">div</span> <span class="token punctuation">{</span>
+          <span class="token property">width</span><span class="token punctuation">:</span> 250px<span class="token punctuation">;</span>
+          <span class="token property">height</span><span class="token punctuation">:</span> 130px<span class="token punctuation">;</span>
+          <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+          <span class="token property">margin</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">article div:first-child</span> <span class="token punctuation">{</span>
+          <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+          <span class="token property">top</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+          <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+          <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>colorful-heart.png<span class="token punctuation">)</span></span> no-repeat center 20px<span class="token punctuation">;</span>
+          <span class="token property">background-color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">article div:last-child</span> <span class="token punctuation">{</span>
+          <span class="token property">background-color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span>
+          <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+          <span class="token property">bottom</span><span class="token punctuation">:</span> -10px<span class="token punctuation">;</span>
+          <span class="token property">right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+          <span class="token property">z-index</span><span class="token punctuation">:</span> -1<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">.multiply-mix</span> <span class="token punctuation">{</span>
+          <span class="token property">mix-blend-mode</span><span class="token punctuation">:</span> multiply<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        </code></pre><button type="button" class="icon copy-icon"><span class="visually-hidden">Copy to
+                                Clipboard</span></button><span class="copy-icon-message visually-hidden" role="alert"
+                            style="top: 52px;"></span>
+                    </div>
+                    <p>И это даст нам следующее:</p><iframe class="sample-code-frame" title="mix-blend-mode sample"
+                        id="frame_mix-blend-mode" width="100%" height="200"
+                        src="https://yari-demos.prod.mdn.mozit.cloud/ru/docs/Learn/CSS/Building_blocks/Advanced_styling_effects/_sample_.mix-blend-mode.html"
+                        loading="lazy"></iframe>
+                    <p>Как видите, смешались не только фоновые изображения, но и <code>&lt;div&gt;</code> под ними.</p>
+                    <div class="notecard note" id="sect3">
+                        <p><strong>Примечание:</strong> Не переживайте, если вы не знаете такие свойства разметки, как
+                            <a href="/ru/docs/Web/CSS/position"><code>position</code></a>, <a
+                                href="/ru/docs/Web/CSS/top"><code>top</code></a>, <a
+                                href="/ru/docs/Web/CSS/bottom"><code>bottom</code></a>, <a
+                                href="/ru/docs/Web/CSS/z-index"><code>z-index</code></a> и т. д. Мы детально рассмотрим
+                            это в модуле <a href="/ru/docs/Learn/CSS/CSS_layout">CSS Layout</a>.</p>
+                    </div>
+                </div>
+            </section>
+            <section aria-labelledby="css-фигуры">
+                <h2 id="css-фигуры"><a href="#css-фигуры">CSS-фигуры</a></h2>
+                <div class="section-content">
+                    <p>Мы можем сделать обтекание содержимым непрямоугольных фигур, используя <a
+                            href="/en-US/docs/Web/CSS/CSS_Shapes" class="only-in-en-us"
+                            title="Currently only available in English (US)">CSS-фигуры
+                            <small>(en-US)<small></small></small></a>.</p>
+                    <p>В примере ниже мы эффектно округлили воздушный шар. В действительности изображение прямоугольное,
+                        но с определением свойства <em>float</em> (по-другому формы не добавляются) и использованием
+                        свойства <a class="only-in-en-us" title="Currently only available in English (US)"
+                            href="/en-US/docs/Web/CSS/shape-outside"><code>shape-outside</code>
+                            <small>(en-US)</small></a> со значением <code>circle(50%)</code>, мы можем создать эффект
+                        обтекания текста.</p><iframe width="100%" height="1000"
+                        src="https://mdn.github.io/css-examples/learn/images/shapes.html" loading="lazy"></iframe>
+                    <p>Форма в этом примере не реагирует на содержание изображения. Вместо этого в центре изображения
+                        определяется центр окружности, как если бы мы начертили циркулем окружность, вписанную в
+                        изображение. Это та окружность, которую обтекает текст.</p>
+                    <div class="notecard note" id="sect4">
+                        <p><strong>Примечание:</strong> В Firefox вы можете использовать <a
+                                href="https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/edit_css_shapes/index.html"
+                                class="external" target="_blank">Инспектор фигур</a>, чтобы редактировать фигуры.</p>
+                    </div>
+                    <p>Значение <code>circle()</code> — лишь одно из нескольких базовых фигур для этого свойства, но
+                        можно и создавать формы. (Читайте <a
+                            href="/en-US/docs/Web/CSS/CSS_Shapes/Overview_of_CSS_Shapes" class="only-in-en-us"
+                            title="Currently only available in English (US)">Обзор CSS-фигур
+                            <small>(en-US)<small></small></small></a> на MDN.)</p>
+                </div>
+            </section>
+            <section aria-labelledby="-webkit-background-clip_text">
+                <h2 id="-webkit-background-clip_text"><a href="#-webkit-background-clip_text">-webkit-background-clip:
+                        text</a></h2>
+                <div class="section-content">
+                    <p>Функция, о которой мы, кажется, упомянули в свойстве <code>text</code> для значения <a
+                            href="/ru/docs/Web/CSS/background-clip"><code>background-clip</code></a>. Опция
+                        <code>-webkit-text-fill-color: transparent;</code> позволяет обрезать фоновые изображения под
+                        форму текста. Это неофициальный стандарт, но он был подключён во множестве браузеров. В данном
+                        контексте обязательно используется префикс <code>-webkit-</code> для любых браузеров:</p>
+                    <div class="code-example">
+                        <pre class="brush: css notranslate"><code><span class="token selector">.text-clip</span> <span class="token punctuation">{</span>
+          <span class="token property">-webkit-background-clip</span><span class="token punctuation">:</span> text<span class="token punctuation">;</span>
+          <span class="token property">-webkit-text-fill-color</span><span class="token punctuation">:</span> transparent<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        </code></pre><button type="button" class="icon copy-icon"><span class="visually-hidden">Copy to
+                                Clipboard</span></button><span class="copy-icon-message visually-hidden" role="alert"
+                            style="top: 52px;"></span>
+                    </div>
+                    <p>Так почему остальные браузеры используют префикс <code>-webkit-</code>? В основном для
+                        совместимости — поэтому многие веб-разработчики стали вставлять префиксы <code>-webkit-</code>,
+                        отчего другие браузеры казались сломанными, когда, по факту, всё было выполнено по всем
+                        стандартам. Поэтому были введены некоторые такие функции.</p>
+                    <p>Если вы собираетесь использовать подобные опции, проверьте совместимость их с браузерами.</p>
+                    <div class="notecard note" id="sect5">
+                        <p><strong>Примечание:</strong> Пример с <code>-webkit-background-clip: text</code> смотрите на
+                            <a href="https://mdn.github.io/learning-area/css/styling-boxes/advanced_box_effects/background-clip-text.html"
+                                class="external" target="_blank">background-clip-text.html</a> (или <a
+                                href="https://github.com/mdn/learning-area/blob/master/css/styling-boxes/advanced_box_effects/background-clip-text.html"
+                                class="external" target="_blank">источнике</a>).</p>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+    <a href="index.html" class="bron">назад</a>
+</body>
+
+</html>

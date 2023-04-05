@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://mdn.github.io/css-examples/learn/images/filter-text.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Images and other unusual elements: filters</title>
+    <link rel="stylesheet" href="https://mdn.github.io/css-examples/learn/styles.css">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      p {
+        margin: 1em 2em;
+        padding: 20px;
+        width: 100px;
+        display: inline-block;
+      }     
+    </style>
+
+    <style class="editable">p {
+  border: 5px dashed red;
+}
+.filter {
+  filter: drop-shadow(5px 5px 1px rgba(0,0,0,0.7));
+}
+
+.box-shadow {
+  box-shadow: 5px 5px 1px rgba(0,0,0,0.7);
+}
+    </style>
+  </head>
+
+  <body>
+    <section class="preview"><p class="filter">Filter</p>
+<p class="box-shadow">Box shadow</p>
+    </section>
+
+    <h4>Interactive editor</h4><textarea class="playable playable-css" style="height: 220px;">p {
+  border: 5px dashed red;
+}
+.filter {
+  filter: drop-shadow(5px 5px 1px rgba(0,0,0,0.7));
+}
+
+.box-shadow {
+  box-shadow: 5px 5px 1px rgba(0,0,0,0.7);
+}
+    </textarea>
+
+    <textarea class="playable playable-html" style="height: 120px;">&lt;p class="filter"&gt;Filter&lt;/p&gt;
+&lt;p class="box-shadow"&gt;Box shadow&lt;/p&gt;
+    </textarea>
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="https://mdn.github.io/css-examples/learn/playable.js"></script>
+
+</body></html>

@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto+Condensed:wght@300;400;700&family=Space+Mono:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    background-color: #000000;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+}
+
+.netos {
+    color: #00a2ff;
+
+}
+.h1{
+    font-size: 64px;
+    font-family: 'Audiowide', cursive;
+}
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 0 50px;
+    margin: 50px 0;
+}
+
+.card {
+    background-color: #ffffff;
+    color: #000000;
+    flex-grow: 1;
+    flex-basis: 300px;
+    height: 150px;
+    outline: 3px double white;
+    outline-offset: 5px;
+    padding: 60px 60px 10px 10px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding-top: 60px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 60px;
+    position: relative;
+
+}
+
+.card-myth {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(14, 9, 121, 1) 50%, rgba(200, 137, 252, 1) 100%);
+    color: #fff;
+}
+
+.myth {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-top-right-radius: 20px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    background-color: #c889fc;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-family: 'Space Mono', monospace;
+}
+
+.main {
+    margin-top: 100px;
+}
+
+.h2 {
+    font-weight: 700;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.card-o {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300;
+}
+
+.ok {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-top-right-radius: 20px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    background-color: #83f379;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-family: 'Space Mono', monospace;
+}
+
+.nok {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-top-right-radius: 20px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    background-color: #fd9595;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-family: 'Space Mono', monospace;
+}
+
+.footer {
+    text-align: center;
+    font-family: 'Audiowide', cursive;
+    font-size: 32px;
+    color: #00ff00;
+
+}
